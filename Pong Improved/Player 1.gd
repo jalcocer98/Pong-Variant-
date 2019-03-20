@@ -26,7 +26,7 @@ func _process(delta):
 		current_y_direction = 1
 	
 	
-	velocity.x = current_x_direction*speed*attack_curve.interpolate(1)
-	velocity.y = current_y_direction*speed*attack_curve.interpolate(1)
+	velocity.x = current_x_direction*speed
+	velocity.y = current_y_direction*speed
 	
 	move_and_collide(velocity)
