@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Player 1.gd" type="Script" id=1]
+[ext_resource path="res://left_pallete.png" type="Texture" id=2]
+[ext_resource path="res://Ball.gd" type="Script" id=3]
+[ext_resource path="res://ball.png" type="Texture" id=4]
+
+[sub_resource type="Curve" id=2]
+
+min_value = 0.0
+max_value = 1.0
+bake_resolution = 100
+_data = [ Vector2( 0, 0 ), 0.0, 1.0, 0, 1, Vector2( 1, 1 ), 1.0, 0.0, 1, 0 ]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[node name="Root" type="Node" index="0"]
+
+[node name="Player 1" type="KinematicBody2D" parent="." index="0"]
+
+position = Vector2( 127.61, 300.625 )
+scale = Vector2( 0.387469, 1.72099 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+speed = 3
+attack_curve = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Player 1" index="0"]
+
+position = Vector2( -3.53586, -1.68357 )
+scale = Vector2( 5.18199, 2.2384 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player 1" index="1"]
+
+position = Vector2( -6.20303, -1.68356 )
+scale = Vector2( 5.18199, 2.2384 )
+build_mode = 0
+polygon = PoolVector2Array( -4.70793, -15.5967, -4.70793, 15.3002, 4.13903, 15.3002, 4.97946, -15.7767 )
+
+[node name="Ball" type="KinematicBody2D" parent="." index="1"]
+
+position = Vector2( 408.981, 297.803 )
+scale = Vector2( 0.295957, 0.368409 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Ball" index="0"]
+
+position = Vector2( 2.48889, -2.659 )
+scale = Vector2( 6.7089, 5.73971 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball" index="1"]
+
+position = Vector2( 2.81641, -2.83716 )
+scale = Vector2( 2.94536, 2.52083 )
+shape = SubResource( 1 )
+
+
